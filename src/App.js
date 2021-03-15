@@ -10,6 +10,10 @@ class App extends Component {
       {name: 'Ritik', age: 20}
     ]
   }
+
+  switchName = () => {
+    console.log('Was clicked!');
+  }
   
   render() {
     return (
@@ -18,6 +22,7 @@ class App extends Component {
         <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
         <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>He'll never have sex.</Person>
         <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
+        <button onClick={this.switchName}>Switch Name</button>
       </div>
     );
   }
