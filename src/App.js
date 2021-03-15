@@ -40,6 +40,7 @@ class App extends Component {
         <Person
           name={this.state.persons[2].name}
           age={this.state.persons[2].age}
+          click={this.switchName}
         />
         <button onClick={this.switchName}>Switch Name</button>
       </div>
