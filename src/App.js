@@ -31,9 +31,16 @@ class App extends Component {
         { name: "Ritik", age: 19 },
       ],
     });
-  }
+  };
 
   render() {
+    const style = {
+      backgroundColor: "whitesmoke",
+      font: "inherit",
+      border: "1px solid blue",
+      padding: "8px",
+    };
+
     return (
       <div className="App">
         <h1>Hello World, this is Iconik.</h1>
@@ -51,9 +58,11 @@ class App extends Component {
         <Person
           name={this.state.persons[2].name}
           age={this.state.persons[2].age}
-          click={this.switchName.bind(this, 'TALHA')}
+          click={this.switchName.bind(this, "TALHA")}
         />
-        <button onClick={() => this.switchName('KR$NA')}>Switch Name</button>
+        <button
+        style= { style} 
+        onClick={() => this.switchName("KR$NA")}>Switch Name</button>
       </div>
     );
   }
