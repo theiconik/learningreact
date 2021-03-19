@@ -9,7 +9,7 @@ class App extends Component {
       { name: "Ujjwal", age: 21 },
       { name: "Ritik", age: 20 },
     ],
-    showPersons : false,
+    showPersons: false,
   };
 
   switchName = (newName) => {
@@ -38,8 +38,8 @@ class App extends Component {
     const doesShow = this.state.showPersons;
     this.setState({
       showPersons: !doesShow,
-    })
-  }
+    });
+  };
 
   render() {
     const style = {
@@ -54,22 +54,9 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-          <Person
-            name={this.state.persons[0].name}
-            age={this.state.persons[0].age}
-          />
-          <Person
-            name={this.state.persons[1].name}
-            age={this.state.persons[1].age}
-            changed={this.nameChanged}
-          >
-            He'll never have sex.
-          </Person>
-          <Person
-            name={this.state.persons[2].name}
-            age={this.state.persons[2].age}
-            click={this.switchName.bind(this, "TALHA")}
-          />
+          {this.state.persons.map((person) => {
+            return <Person name={person.name} age={person.age} />;
+          })}
         </div>
       );
     }
@@ -77,7 +64,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Hello World, this is Iconik.</h1>
-        
+
         <button style={style} onClick={this.togglePerson}>
           Toggle Person
         </button>
@@ -87,4 +74,4 @@ class App extends Component {
   }
 }
 
-export default App; 
+export default App;
