@@ -42,11 +42,12 @@ class App extends Component {
   };
 
   deletePerson = (personIndex) => {
-    const persons = this.state.persons;
-    persons.splice(personIndex, 1);
+    //const persons = this.state.persons.slice();
+    const p= [...this.state.persons]
+    p.splice(personIndex, 1);
     this.setState(
       {
-        persons : persons,
+        persons : p,
       }
     )
   }
@@ -59,10 +60,10 @@ class App extends Component {
       padding: "8px",
     };
 
-    let persons = null;
+    let personsvar = null;
 
     if (this.state.showPersons) {
-      persons = (
+      personsvar = (
         <div>
           {this.state.persons.map((person, index) => {
             return <Person 
@@ -82,7 +83,7 @@ class App extends Component {
         <button style={style} onClick={this.togglePerson}>
           Toggle Person
         </button>
-        {persons}
+        {personsvar}
       </div>
     );
   }
