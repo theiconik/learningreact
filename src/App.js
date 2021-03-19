@@ -49,11 +49,11 @@ class App extends Component {
       padding: "8px",
     };
 
-    return (
-      <div className="App">
-        <h1>Hello World, this is Iconik.</h1>
-        { this.state.showPersons==true ?
-          <div>
+    let persons = null;
+
+    if (this.state.showPersons) {
+      persons = (
+        <div>
           <Person
             name={this.state.persons[0].name}
             age={this.state.persons[0].age}
@@ -70,11 +70,18 @@ class App extends Component {
             age={this.state.persons[2].age}
             click={this.switchName.bind(this, "TALHA")}
           />
-        </div> : null
-        }
+        </div>
+      );
+    }
+
+    return (
+      <div className="App">
+        <h1>Hello World, this is Iconik.</h1>
+        
         <button style={style} onClick={this.togglePerson}>
           Toggle Person
         </button>
+        {persons}
       </div>
     );
   }
