@@ -59,10 +59,12 @@ class App extends Component {
 
   render() {
     const style = {
-      backgroundColor: "whitesmoke",
+      backgroundColor: "green",
+      color: "white",
       font: "inherit",
       border: "1px solid blue",
       padding: "8px",
+      cursor: "pointer",
     };
 
     let personsvar = null;
@@ -81,12 +83,13 @@ class App extends Component {
           })}
         </div>
       );
+
+      style.backgroundColor = "red";
     }
 
     return (
       <div className="App">
         <h1>Hello World, this is Iconik.</h1>
-
         <button style={style} onClick={this.togglePerson}>
           Toggle Person
         </button>
