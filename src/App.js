@@ -76,7 +76,7 @@ class App extends Component {
             return <Person 
             name={person.name} 
             age={person.age} 
-            //click={() => this.deletePerson(index)}
+            click={() => this.deletePerson(index)}
             key={person.id}
             changed= {(event) => this.nameChanged(event, person.id)}
             />;
@@ -87,9 +87,19 @@ class App extends Component {
       style.backgroundColor = "red";
     }
 
+    let classes = [];
+    if(this.state.persons.length <= 2) {
+      classes.push('red');  // classes = ['red']
+
+    }
+
+    if(this.state.persons.length <= 1) {
+      classes.push('bold');  // classes = ['red', 'bold']
+    }
+
     return (
       <div className="App">
-        <h1>Hello World, this is Iconik.</h1>
+        <h1 className={classes.join(' ')}>Hello World, this is Iconik.</h1>
         <button style={style} onClick={this.togglePerson}>
           Toggle Person
         </button>
