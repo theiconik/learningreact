@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Person from "./Person/Person";
-import Radium, { StyleRoot } from "radium";
+//import Radium, { StyleRoot } from "radium";
 
 class App extends Component {
   state = {
@@ -90,10 +90,10 @@ class App extends Component {
       );
 
       style.backgroundColor = "red";
-      style[":hover"] = {
-        backgroundColor: "lightred",
-        color: "black",
-      };
+      // style[":hover"] = {
+      //   backgroundColor: "lightred",
+      //   color: "black",
+      // };
     }
 
     let classes = [];
@@ -106,7 +106,7 @@ class App extends Component {
     }
 
     return (
-      <StyleRoot>
+      //<StyleRoot>
         <div className="App">
           <h1 className={classes.join(" ")}>Hello World, this is Iconik.</h1>
           <button style={style} onClick={this.togglePerson}>
@@ -114,9 +114,9 @@ class App extends Component {
           </button>
           {personsvar}
         </div>
-      </StyleRoot>
+      //</StyleRoot>
     );
   }
 }
 
-export default Radium(App);
+export default App;
