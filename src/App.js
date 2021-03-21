@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Person from "./Person/Person";
-import  Radium  from "radium";
+import Radium, { StyleRoot } from "radium";
 
 class App extends Component {
   state = {
@@ -18,25 +18,25 @@ class App extends Component {
     //Don't do this: this.state.persons[0].name = 'KR$NA';
     this.setState({
       persons: [
-        {  name: newName, age: 30 },
-        {  name: "Ujjwal", age: 21 },
-        {  name: "Ritik", age: 19 },
+        { name: newName, age: 30 },
+        { name: "Ujjwal", age: 21 },
+        { name: "Ritik", age: 19 },
       ],
     });
   };
 
   nameChanged = (event, id) => {
-    const personIndex = this.state.persons.findIndex(p => {
+    const personIndex = this.state.persons.findIndex((p) => {
       return p.id === id;
     });
 
-    const person = {...this.state.persons[personIndex]}
+    const person = { ...this.state.persons[personIndex] };
 
     person.name = event.target.value;
     const persons = [...this.state.persons];
-    persons[personIndex] = person
+    persons[personIndex] = person;
     this.setState({
-      persons: persons
+      persons: persons,
     });
   };
 
@@ -49,14 +49,12 @@ class App extends Component {
 
   deletePerson = (personIndex) => {
     //const persons = this.state.persons.slice();
-    const p= [...this.state.persons] //Creating copy 
+    const p = [...this.state.persons]; //Creating copy
     p.splice(personIndex, 1);
-    this.setState(
-      {
-        persons : p,
-      }
-    )
-  }
+    this.setState({
+      persons: p,
+    });
+  };
 
   render() {
     const style = {
@@ -66,10 +64,10 @@ class App extends Component {
       border: "1px solid blue",
       padding: "8px",
       cursor: "pointer",
-      ':hover': {
-        backgroundColor : "lightgreen",
-        color : "black",
-      } 
+      ":hover": {
+        backgroundColor: "lightgreen",
+        color: "black",
+      },
     };
 
     let personsvar = null;
@@ -78,42 +76,45 @@ class App extends Component {
       personsvar = (
         <div>
           {this.state.persons.map((person, index) => {
-            return <Person 
-            name={person.name} 
-            age={person.age} 
-            click={() => this.deletePerson(index)}
-            key={person.id}
-            changed= {(event) => this.nameChanged(event, person.id)}
-            />;
+            return (
+              <Person
+                name={person.name}
+                age={person.age}
+                click={() => this.deletePerson(index)}
+                key={person.id}
+                changed={(event) => this.nameChanged(event, person.id)}
+              />
+            );
           })}
         </div>
       );
 
       style.backgroundColor = "red";
-      style[':hover'] = {
-        backgroundColor : 'lightred',
-        color: 'black'
-      }
+      style[":hover"] = {
+        backgroundColor: "lightred",
+        color: "black",
+      };
     }
 
     let classes = [];
-    if(this.state.persons.length <= 2) {
-      classes.push('red');  // classes = ['red']
-
+    if (this.state.persons.length <= 2) {
+      classes.push("red"); // classes = ['red']
     }
 
-    if(this.state.persons.length <= 1) {
-      classes.push('bold');  // classes = ['red', 'bold']
+    if (this.state.persons.length <= 1) {
+      classes.push("bold"); // classes = ['red', 'bold']
     }
 
     return (
-      <div className="App">
-        <h1 className={classes.join(' ')}>Hello World, this is Iconik.</h1>
-        <button style={style} onClick={this.togglePerson}>
-          Toggle Person
-        </button>
-        {personsvar}
-      </div>
+      <StyleRoot>
+        <div className="App">
+          <h1 className={classes.join(" ")}>Hello World, this is Iconik.</h1>
+          <button style={style} onClick={this.togglePerson}>
+            Toggle Person
+          </button>
+          {personsvar}
+        </div>
+      </StyleRoot>
     );
   }
 }
