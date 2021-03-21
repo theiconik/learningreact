@@ -5,14 +5,14 @@ import Person from "./Person/Person";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-      background-color: green;
+      background-color: ${props => props.alt ? 'red' : 'green'};
       color: white;
       font: inherit;
       border: 1px solid blue;
       padding: 8px;
       cursor: pointer;
       &:hover {
-        background-color: lightgreen;
+        background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};;
         color: black;
       }
 `;
@@ -123,7 +123,7 @@ class App extends Component {
       //<StyleRoot>
       <div className="App">
         <h1 className={classes.join(" ")}>Hello World, this is Iconik.</h1>
-        <StyledButton /*style={style}*/ onClick={this.togglePerson}>
+        <StyledButton alt={this.state.showPersons} /*style={style}*/ onClick={this.togglePerson}>
           Toggle Person
         </StyledButton>
         {personsvar}
