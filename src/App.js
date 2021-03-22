@@ -12,7 +12,7 @@ const StyledButton = styled.button`
       padding: 8px;
       cursor: pointer;
       &:hover {
-        background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};;
+        background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
         color: black;
       }
 `;
