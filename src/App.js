@@ -1,21 +1,21 @@
 import React, { Component } from "react";
-import "./App.css";
+import classes from "./App.css";
 import Person from "./Person/Person";
 //import Radium, { StyleRoot } from "radium";
-import styled from "styled-components";
+//import styled from "styled-components";
 
-const StyledButton = styled.button`
-      background-color: ${props => props.alt ? 'red' : 'green'};
-      color: white;
-      font: inherit;
-      border: 1px solid blue;
-      padding: 8px;
-      cursor: pointer;
-      &:hover {
-        background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
-        color: black;
-      }
-`;
+// const StyledButton = styled.button`
+//       background-color: ${props => props.alt ? 'red' : 'green'};
+//       color: white;
+//       font: inherit;
+//       border: 1px solid blue;
+//       padding: 8px;
+//       cursor: pointer;
+//       &:hover {
+//         background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
+//         color: black;
+//       }
+// `;
 
 class App extends Component {
   state = {
@@ -71,18 +71,20 @@ class App extends Component {
   };
 
   render() {
-    const style = {
-      backgroundColor: "green",
-      color: "white",
-      font: "inherit",
-      border: "1px solid blue",
-      padding: "8px",
-      cursor: "pointer",
-      ":hover": {
-        backgroundColor: "lightgreen",
-        color: "black",
-      },
-    };
+    // const style = {
+    //   backgroundColor: "green",
+    //   color: "white",
+    //   font: "inherit",
+    //   border: "1px solid blue",
+    //   padding: "8px",
+    //   cursor: "pointer",
+    //   ":hover": {
+    //     backgroundColor: "lightgreen",
+    //     color: "black",
+    //   },
+    // };
+
+    let btnClass = [classes.Button];
 
     let personsvar = null;
 
@@ -103,6 +105,8 @@ class App extends Component {
         </div>
       );
 
+      btnClass.push(classes.Red);
+
       //style.backgroundColor = "red";
       // style[":hover"] = {
       //   backgroundColor: "lightred",
@@ -110,22 +114,22 @@ class App extends Component {
       // };
     }
 
-    let classes = [];
+    let assignedClasses = [];
     if (this.state.persons.length <= 2) {
-      classes.push("red"); // classes = ['red']
+      assignedClasses.push(classes.red); // classes = ['red']
     }
 
     if (this.state.persons.length <= 1) {
-      classes.push("bold"); // classes = ['red', 'bold']
+      assignedClasses.push(classes.bold); // classes = ['red', 'bold']
     }
 
     return (
       //<StyleRoot>
-      <div className="App">
-        <h1 className={classes.join(" ")}>Hello World, this is Iconik.</h1>
-        <StyledButton alt={this.state.showPersons} /*style={style}*/ onClick={this.togglePerson}>
+      <div className={classes.App}>
+        <h1 className={assignedClasses.join(" ")}>Hello World, this is Iconik.</h1>
+        <button className={btnClass.join(' ')} alt={this.state.showPersons} /*style={style}*/ onClick={this.togglePerson}>
           Toggle Person
-        </StyledButton>
+        </button>
         {personsvar}
       </div>
       //</StyleRoot>
