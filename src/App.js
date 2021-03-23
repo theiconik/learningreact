@@ -116,11 +116,11 @@ class App extends Component {
 
     let assignedClasses = [];
     if (this.state.persons.length <= 2) {
-      assignedClasses.push(classes.red); // classes = ['red']
+      assignedClasses.push(classes.red); // assignedClasses = ['red']
     }
 
     if (this.state.persons.length <= 1) {
-      assignedClasses.push(classes.bold); // classes = ['red', 'bold']
+      assignedClasses.push(classes.bold); // assignedClasses = ['red', 'bold']
     }
 
     return (
