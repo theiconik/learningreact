@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import classes from "./App.css";
-//import Person from "../components/Persons/Person/Person";
 import Persons from "../components/Persons/Persons";
+import Cockpit from "../components/Cockpit/Cockpit";
 
 
 class App extends Component {
@@ -56,40 +56,28 @@ class App extends Component {
   };
 
   render() {
-    let btnClass = [classes.Button];
-
-    let personsvar = null;
+    let persons = null;
 
     if (this.state.showPersons) {
-      personsvar = (
-        <div>
+      persons = (
           <Persons 
           persons={this.state.persons} 
           clicked={this.deletePerson}
           changed= {this.nameChanged} 
           />
-        </div>
       );
-
-      btnClass.push(classes.Red);
     }
 
-    let assignedClasses = [];
-    if (this.state.persons.length <= 2) {
-      assignedClasses.push(classes.red); // assignedClasses = ['red']
-    }
-
-    if (this.state.persons.length <= 1) {
-      assignedClasses.push(classes.bold); // assignedClasses = ['red', 'bold']
-    }
+    
 
     return (
       <div className={classes.App}>
-        <h1 className={assignedClasses.join(" ")}>Hello World, this is Iconik.</h1>
-        <button className={btnClass.join(' ')} alt={this.state.showPersons} /*style={style}*/ onClick={this.togglePerson}>
-          Toggle Person
-        </button>
-        {personsvar}
+        <Cockpit 
+        showPersons={this.state.showPersons}
+        persons={this.state.persons} 
+        clicked={this.togglePerson}
+        />
+        {persons}
       </div>
     );
   }
