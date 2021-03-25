@@ -2,21 +2,7 @@ import React, { Component } from "react";
 import classes from "./App.css";
 //import Person from "../components/Persons/Person/Person";
 import Persons from "../components/Persons/Persons";
-//import Radium, { StyleRoot } from "radium";
-//import styled from "styled-components";
 
-// const StyledButton = styled.button`
-//       background-color: ${props => props.alt ? 'red' : 'green'};
-//       color: white;
-//       font: inherit;
-//       border: 1px solid blue;
-//       padding: 8px;
-//       cursor: pointer;
-//       &:hover {
-//         background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
-//         color: black;
-//       }
-// `;
 
 class App extends Component {
   state = {
@@ -29,8 +15,6 @@ class App extends Component {
   };
 
   switchName = (newName) => {
-    //console.log('Was clicked!');
-    //Don't do this: this.state.persons[0].name = 'KR$NA';
     this.setState({
       persons: [
         { name: newName, age: 30 },
@@ -72,19 +56,6 @@ class App extends Component {
   };
 
   render() {
-    // const style = {
-    //   backgroundColor: "green",
-    //   color: "white",
-    //   font: "inherit",
-    //   border: "1px solid blue",
-    //   padding: "8px",
-    //   cursor: "pointer",
-    //   ":hover": {
-    //     backgroundColor: "lightgreen",
-    //     color: "black",
-    //   },
-    // };
-
     let btnClass = [classes.Button];
 
     let personsvar = null;
@@ -101,12 +72,6 @@ class App extends Component {
       );
 
       btnClass.push(classes.Red);
-
-      //style.backgroundColor = "red";
-      // style[":hover"] = {
-      //   backgroundColor: "lightred",
-      //   color: "black",
-      // };
     }
 
     let assignedClasses = [];
@@ -119,7 +84,6 @@ class App extends Component {
     }
 
     return (
-      //<StyleRoot>
       <div className={classes.App}>
         <h1 className={assignedClasses.join(" ")}>Hello World, this is Iconik.</h1>
         <button className={btnClass.join(' ')} alt={this.state.showPersons} /*style={style}*/ onClick={this.togglePerson}>
@@ -127,7 +91,6 @@ class App extends Component {
         </button>
         {personsvar}
       </div>
-      //</StyleRoot>
     );
   }
 }
